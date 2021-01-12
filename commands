@@ -1,0 +1,19 @@
+* run maven: 
+-clean install spring-boot:run
+
+* generate image docker:
+-clean install docker:build
+
+* generate arthetype:
+-cd ~/raiz_proyecto 
+-mvn clean archetype:create-from-project -Darchetype.properties="my_archetype.properties"
+-cd ~/raiz_proyecto/target/generated-sources/archetype/
+-mvn install
+
+
+Generar arquetipo a partir de un arhivo de propiedades:
+mvn archetype:create-from-project -Darchetype.properties=../archetype.properties
+
+Instalar arquetipo:
+mvn archetype:generate -DarchetypeCatalog=local
+mvn install archetype:update-local-catalog

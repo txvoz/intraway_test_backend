@@ -1,0 +1,26 @@
+spring:
+  profiles:
+    active: local
+---
+spring:
+  profiles: local
+  datasource:
+    hikari:
+      maximum-pool-size: 2
+      connection-timeout: 10000
+    database: ${MYSQL_DATABASE}
+    host: ${MYSQL_HOST}
+    port: ${MYSQL_PORT}
+    username: ${MYSQL_USERNAME}
+    password: ${MYSQL_PASSWORD}
+    url: jdbc:mysql://${spring.datasource.host}:${spring.datasource.port}/${spring.datasource.database}?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+  jpa:
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+        format_sql: true
+        show_sql: true
+server:
+  port: 9182
